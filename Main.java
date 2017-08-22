@@ -7,26 +7,24 @@ public class Main {
 /** 请完成下面这个函数，实现题目要求的功能 **/
 /** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/
     static int pick(int[] peaches) {
-        
+        int[] d = new int[peaches.length];
+        d[0] = 1;
         int i = 0;
         int j = 0;
-        int k = 1;
-        int t = 1;
-        int n = 0;
+        int t = 0;
         for ( i = 0; i< peaches.length; i++)
         {
-        	n = peaches [ i ];
-            if(t < k)
-               t = k;
-               k = 1;
-           for(j = i + 1; j < peaches.length; j++)
-           {    
-           if(n < peaches[ j ])
-               k++;
-           n = peaches[ j ];
-           }
+           for(j = 0; j < i; j++)
+           	{    
+        	   if(peaches [ i ] > peaches[ j ] && d[ i ] < d[ j ] + 1)
+           			{
+        		   		d[i] = d[j] + 1;
+        		   		if( t < d[ i ])
+        		   			t = d[ i ];
+           			}
+           	}
             
-           
+               
         }
     
     return t;
